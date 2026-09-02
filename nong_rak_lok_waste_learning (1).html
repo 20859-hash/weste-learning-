@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>น้องรักษ์โลก | เรียนรู้เรื่องขยะ</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Trebuchet MS","Tahoma",sans-serif;background:#f0fff4;color:#243b35}
+header{background:linear-gradient(135deg,#16a34a,#06b6d4);color:#fff;text-align:center;padding:42px 20px}
+header .logo{font-size:72px}
+header h1{margin:8px 0;font-size:clamp(30px,6vw,52px)}
+header p{font-size:20px;margin:8px 0}
+nav{position:sticky;top:0;z-index:20;background:#fff;padding:12px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;box-shadow:0 3px 12px #0002}
+nav button{border:0;background:#e8f7ee;color:#17633b;padding:11px 17px;border-radius:999px;font-size:15px;font-weight:bold;cursor:pointer}
+nav button:hover,nav button.active{background:#16a34a;color:#fff}
+main{max-width:1050px;margin:auto;padding:28px 18px}
+.page{display:none;animation:fade .3s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero,.box,.card{background:#fff;border-radius:28px;box-shadow:0 7px 22px #00000012}
+.hero{text-align:center;padding:38px 22px}
+.hero .earth{font-size:90px}
+h2{color:#15803d;font-size:30px}
+.btn{border:0;border-radius:999px;padding:13px 22px;background:#16a34a;color:#fff;font-weight:bold;font-size:16px;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{padding:24px;text-align:center}
+.card .icon{font-size:60px}
+.card h3{color:#0891b2}
+.badge{display:inline-block;background:#dcfce7;color:#166534;border-radius:999px;padding:6px 12px;font-weight:bold}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.bin{padding:24px;border-radius:28px;color:#fff;text-align:center;min-height:210px;box-shadow:0 6px 16px #0002}
+.bin .emoji{font-size:65px}
+.organic{background:#22c55e}.recycle{background:#3b82f6}.general{background:#eab308;color:#3f3200}.danger{background:#ef4444}
+.box{padding:28px;margin-top:20px}
+.game-item{font-size:90px;text-align:center;margin:12px}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:650px;margin:auto}
+.answers button,.quiz-options button{border:2px solid #dbeafe;background:#f8fbff;border-radius:18px;padding:14px;font-size:16px;cursor:pointer}
+.answers button:hover,.quiz-options button:hover{background:#dcfce7;border-color:#86efac}
+.message{text-align:center;font-size:20px;font-weight:bold;min-height:32px;margin:18px}
+.progress{height:14px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:12px 0 22px}
+.progress span{display:block;height:100%;background:#16a34a;width:0%;transition:.3s}
+.quiz-question{background:#f0fdf4;border-radius:22px;padding:20px;margin:16px 0}
+.quiz-options{display:grid;gap:8px}
+.quiz-options button.selected{background:#bfdbfe;border-color:#60a5fa}
+.result{text-align:center;font-size:24px;font-weight:bold;margin-top:20px}
+footer{background:#14532d;color:#fff;text-align:center;padding:24px;margin-top:20px}
+.small{color:#64748b}
+@media(max-width:600px){nav button{flex:1 1 40%}.answers{grid-template-columns:1fr}.hero .earth{font-size:70px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🌍</div>
+  <h1>น้องรักษ์โลก ♻️</h1>
+  <p>เว็บไซต์สื่อการเรียนรู้เรื่องขยะสำหรับเด็ก</p>
+</header>
+
+<nav id="nav">
+  <button data-page="home" class="active">🏠 หน้าแรก</button>
+  <button data-page="knowledge">📚 ความรู้</button>
+  <button data-page="sorting">♻️ แยกขยะ</button>
+  <button data-page="game">🎮 เกม</button>
+  <button data-page="quiz">📝 แบบทดสอบ</button>
+</nav>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="earth">🌎</div>
+    <span class="badge">เรียนรู้ • เล่นสนุก • รักษ์โลก</span>
+    <h2>มารู้จักขยะกันเถอะ!</h2>
+    <p>เรียนรู้ประเภทของขยะ วิธีคัดแยก และฝึกทิ้งขยะให้ถูกถัง</p>
+    <button class="btn" onclick="showPage('knowledge')">เริ่มเรียนรู้ 🚀</button>
+  </div>
+  <div class="grid" style="margin-top:20px">
+    <div class="card"><div class="icon">🗑️</div><h3>รู้จักขยะ</h3><p>ขยะมีหลายประเภท และแต่ละประเภทควรทิ้งแตกต่างกัน</p></div>
+    <div class="card"><div class="icon">♻️</div><h3>คัดแยกให้ถูก</h3><p>การแยกขยะช่วยให้ขยะบางส่วนกลับมาใช้ประโยชน์ได้</p></div>
+    <div class="card"><div class="icon">🌱</div><h3>ช่วยโลก</h3><p>ลดการใช้ของที่ไม่จำเป็น ใช้ซ้ำ และคัดแยกก่อนทิ้ง</p></div>
+  </div>
+</section>
+
+<section id="knowledge" class="page">
+  <h2>📚 ความรู้เรื่องขยะ</h2>
+  <p>ขยะคือสิ่งของหรือวัสดุที่เราไม่ต้องการใช้แล้ว แต่บางชนิดสามารถนำกลับมาใช้ใหม่หรือรีไซเคิลได้</p>
+  <div class="grid">
+    <div class="card"><div class="icon">🍌</div><h3>ขยะอินทรีย์</h3><p>เช่น เศษอาหาร เปลือกผลไม้ และใบไม้ สามารถนำไปทำปุ๋ยหมักได้</p></div>
+    <div class="card"><div class="icon">♻️</div><h3>ขยะรีไซเคิล</h3><p>เช่น กระดาษ ขวดพลาสติก กระป๋อง และแก้ว ควรคัดแยกก่อนนำไปรีไซเคิล</p></div>
+    <div class="card"><div class="icon">🗑️</div><h3>ขยะทั่วไป</h3><p>เช่น ซองขนมและวัสดุที่ไม่เหมาะกับการรีไซเคิลหรือทำปุ๋ย</p></div>
+    <div class="card"><div class="icon">⚠️</div><h3>ขยะอันตราย</h3><p>เช่น ถ่านไฟฉาย หลอดไฟ และกระป๋องสเปรย์ ควรแยกทิ้งในจุดที่กำหนด</p></div>
+  </div>
+</section>
+
+<section id="sorting" class="page">
+  <h2>♻️ วิธีแยกขยะ</h2>
+  <p>จำง่าย ๆ ด้วย 4 ประเภทหลัก</p>
+  <div class="bins">
+    <div class="bin organic"><div class="emoji">🟢</div><h3>ขยะอินทรีย์</h3><p>เศษอาหาร<br>เปลือกผลไม้<br>ใบไม้</p></div>
+    <div class="bin recycle"><div class="emoji">🔵</div><h3>ขยะรีไซเคิล</h3><p>กระดาษ<br>ขวดพลาสติก<br>กระป๋อง</p></div>
+    <div class="bin general"><div class="emoji">🟡</div><h3>ขยะทั่วไป</h3><p>ซองขนม<br>ขยะที่รีไซเคิลไม่ได้</p></div>
+    <div class="bin danger"><div class="emoji">🔴</div><h3>ขยะอันตราย</h3><p>ถ่านไฟฉาย<br>หลอดไฟ<br>กระป๋องสเปรย์</p></div>
+  </div>
+  <div class="box"><h3>💡 เคล็ดลับรักษ์โลก</h3><p>ลดการใช้ของใช้ครั้งเดียว • พกขวดน้ำ • ใช้ถุงผ้า • ซ่อมและใช้ของเดิมให้นานขึ้น • แยกขยะก่อนทิ้ง</p></div>
+</section>
+
+<section id="game" class="page">
+  <h2>🎮 เกมแยกขยะ</h2>
+  <div class="box">
+    <p style="text-align:center">เลือกถังที่ถูกต้องสำหรับขยะชิ้นนี้</p>
+    <div class="progress"><span id="gameProgress"></span></div>
+    <div id="gameItem" class="game-item">🍌</div>
+    <h3 id="gameName" style="text-align:center"></h3>
+    <div class="answers">
+      <button onclick="gameAnswer('organic')">🟢 อินทรีย์</button>
+      <button onclick="gameAnswer('recycle')">🔵 รีไซเคิล</button>
+      <button onclick="gameAnswer('general')">🟡 ทั่วไป</button>
+      <button onclick="gameAnswer('danger')">🔴 อันตราย</button>
+    </div>
+    <div id="gameMessage" class="message"></div>
+    <p style="text-align:center">คะแนน: <b id="gameScore">0</b> / <span id="gameTotal">8</span></p>
+    <div style="text-align:center"><button class="btn" onclick="resetGame()">เริ่มเกมใหม่ 🔄</button></div>
+  </div>
+</section>
+
+<section id="quiz" class="page">
+  <h2>📝 แบบทดสอบเรื่องขยะ</h2>
+  <div class="box">
+    <p>ตอบให้ครบ 5 ข้อ แล้วกด “ส่งคำตอบ” เพื่อดูคะแนน</p>
+    <div id="quizArea"></div>
+    <div style="text-align:center">
+      <button class="btn" onclick="submitQuiz()">ส่งคำตอบ 🏆</button>
+      <button class="btn" style="background:#0891b2" onclick="resetQuiz()">ทำใหม่ 🔄</button>
+    </div>
+    <div id="quizResult" class="result"></div>
+  </div>
+</section>
+</main>
+
+<footer>🌱 น้องรักษ์โลก ♻️ เรียนรู้วันนี้ เพื่อโลกที่ดีในวันหน้า 🌍</footer>
+
+<script>
+const pages=document.querySelectorAll('.page');
+const navButtons=document.querySelectorAll('nav button');
+
+function showPage(id){
+  pages.forEach(p=>p.classList.toggle('active',p.id===id));
+  navButtons.forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+navButtons.forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+
+const gameData=[
+  {emoji:'🍌',name:'เปลือกกล้วย',type:'organic'},
+  {emoji:'🍎',name:'เศษแอปเปิล',type:'organic'},
+  {emoji:'🥤',name:'ขวดพลาสติก',type:'recycle'},
+  {emoji:'🥫',name:'กระป๋องเครื่องดื่ม',type:'recycle'},
+  {emoji:'🍪',name:'ซองขนม',type:'general'},
+  {emoji:'🧻',name:'กระดาษทิชชูใช้แล้ว',type:'general'},
+  {emoji:'🔋',name:'ถ่านไฟฉาย',type:'danger'},
+  {emoji:'💡',name:'หลอดไฟ',type:'danger'}
+];
+let gameIndex=0,gameScore=0;
+document.getElementById('gameTotal').textContent=gameData.length;
+
+function loadGame(){
+  const x=gameData[gameIndex];
+  document.getElementById('gameItem').textContent=x.emoji;
+  document.getElementById('gameName').textContent=x.name;
+  document.getElementById('gameMessage').textContent='';
+  document.getElementById('gameProgress').style.width=(gameIndex/gameData.length*100)+'%';
+}
+function gameAnswer(type){
+  const msg=document.getElementById('gameMessage');
+  if(type===gameData[gameIndex].type){
+    gameScore++;
+    msg.textContent='🎉 ถูกต้อง! เก่งมาก';
+    msg.style.color='#15803d';
+  }else{
+    msg.textContent='❌ ยังไม่ถูก ลองดูประเภทขยะอีกครั้งนะ';
+    msg.style.color='#dc2626';
+  }
+  document.getElementById('gameScore').textContent=gameScore;
+  setTimeout(()=>{
+    gameIndex++;
+    if(gameIndex>=gameData.length){
+      document.getElementById('gameItem').textContent='🏆';
+      document.getElementById('gameName').textContent='จบเกมแล้ว!';
+      document.getElementById('gameMessage').textContent=`ได้ ${gameScore} / ${gameData.length} คะแนน`;
+      document.getElementById('gameProgress').style.width='100%';
+    }else loadGame();
+  },650);
+}
+function resetGame(){gameIndex=0;gameScore=0;document.getElementById('gameScore').textContent=0;loadGame();}
+loadGame();
+
+const quizData=[
+ {q:'ขวดพลาสติกที่สะอาดควรจัดเป็นขยะประเภทใด?',a:['ขยะอินทรีย์','ขยะรีไซเคิล','ขยะอันตราย'],c:1},
+ {q:'ถ่านไฟฉายควรจัดเป็นขยะประเภทใด?',a:['ขยะอันตราย','ขยะอินทรีย์','ขยะทั่วไป'],c:0},
+ {q:'เศษอาหารเหมาะกับขยะประเภทใด?',a:['ขยะรีไซเคิล','ขยะอันตราย','ขยะอินทรีย์'],c:2},
+ {q:'ข้อใดช่วยลดปริมาณขยะได้ดีที่สุด?',a:['ใช้ถุงผ้าซ้ำ','ทิ้งขยะลงพื้น','ใช้ของแล้วทิ้งทันที'],c:0},
+ {q:'ก่อนทิ้งขยะควรทำอย่างไร?',a:['ทิ้งรวมทุกอย่าง','แยกขยะตามประเภท','วางไว้ข้างถัง'],c:1}
+];
+let quizAnswers=Array(quizData.length).fill(null);
+
+function renderQuiz(){
+  const area=document.getElementById('quizArea');
+  area.innerHTML=quizData.map((x,i)=>`
+    <div class="quiz-question">
+      <p><b>${i+1}. ${x.q}</b></p>
+      <div class="quiz-options">
+        ${x.a.map((v,j)=>`<button class="${quizAnswers[i]===j?'selected':''}" onclick="selectQuiz(${i},${j})">${v}</button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+function selectQuiz(i,j){quizAnswers[i]=j;renderQuiz();}
+function submitQuiz(){
+  if(quizAnswers.some(x=>x===null)){
+    document.getElementById('quizResult').textContent='⚠️ กรุณาตอบให้ครบทุกข้อก่อนส่งคำตอบ';
+    document.getElementById('quizResult').style.color='#dc2626';
+    return;
+  }
+  const score=quizAnswers.reduce((s,x,i)=>s+(x===quizData[i].c?1:0),0);
+  let text=score===5?'🌟 ยอดเยี่ยม!':score>=3?'😊 เก่งมาก!':'💪 ลองทบทวนบทเรียนแล้วทำใหม่อีกครั้งนะ';
+  document.getElementById('quizResult').innerHTML=`${text}<br>คุณได้ ${score} / ${quizData.length} คะแนน`;
+  document.getElementById('quizResult').style.color='#15803d';
+}
+function resetQuiz(){quizAnswers=Array(quizData.length).fill(null);document.getElementById('quizResult').textContent='';renderQuiz();}
+renderQuiz();
+</script>
+</body>
+</html>
